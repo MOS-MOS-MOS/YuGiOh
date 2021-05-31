@@ -1,7 +1,7 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'text-image-generator',
+    title: 'nuxt-text-image-generator',
     htmlAttrs: {
       lang: 'ja'
     },
@@ -37,7 +37,15 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/buefy
-    'nuxt-buefy'
+    'nuxt-buefy',
+    '@nuxtjs/dotenv',
+    [
+      '@nuxtjs/google-gtag',
+      {
+        id: process.env.GAID,
+        debug: false
+      }
+    ]
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

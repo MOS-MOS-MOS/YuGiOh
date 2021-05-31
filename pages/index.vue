@@ -23,14 +23,14 @@
 
       <div id="konvaCanvas" style="margin: auto;">
 
-        <!-- ステージを定義する -->
+        <!-- ステージ -->
         <v-stage ref="stage"
         :config="{
           width: 600,
           height: 315,
         }">
 
-          <!-- レイヤーを定義する -->
+          <!-- レイヤー -->
           <v-layer ref="layer">
 
             <!-- 画像 -->
@@ -104,3 +104,7 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+
+</style>

@@ -1,4 +1,4 @@
-# text-image-generator
+# nuxt-text-image-generator
 
 ## Build Setup
 
