@@ -161,9 +161,9 @@ export default {
   methods: {
     save () {
       var node = document.getElementById('wrapper');
-      if (window.navigator.userAgent.toLowerCase().match(/iPhone|Android.+Mobile/)){
+      if (window.navigator.userAgent.toLowerCase().match(/iPhone|Android.+Mobile|mac/)){
         this.$buefy.notification.open({
-          message: 'Long press to save the image.',
+          message: 'Scroll down and long press the image.',
           type: 'is-light',
           position: 'is-bottom-right'
         })
@@ -211,10 +211,12 @@ label {
 .is-family-mono {
   font-family: 'Menlo', 'Source Code Pro', monospace !important;
 }
-input[type="text"]
-{
+input[type="text"] {
   background: transparent;
   color: #eee;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #ccc;
 }
 #preview {
   width: 100%;
