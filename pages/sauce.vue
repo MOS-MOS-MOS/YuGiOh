@@ -6,18 +6,18 @@
         <p class="has-text-centered is-family-mono" style="color: #BDCCD4;">Generate editor-like images with your source code. </p>
       </div>
       <div class="columns is-mobile is-multiline is-flex-direction-row-reverse is-variable is-8 mb-5">
-        <div class="column is-7-tablet is-6-desktop">
+        <div class="column is-8-tablet is-7-desktop">
           <div class="block">
             <b-field grouped>
               <b-field label="Width" class="pr-6" expanded>
-                <b-slider v-model="wrapperWidth" indicator :custom-formatter="(val) => Math.round(val*1.5).toString()" :tooltip="false" size="is-medium" :min="480" :max="960"></b-slider>
+                <b-slider v-model="wrapperWidth" indicator :custom-formatter="(val) => (val*2).toString()" :tooltip="false" size="is-medium" :min="480" :max="960"></b-slider>
               </b-field>
               <b-field label="Height" class="pr-6" expanded>
-                <b-slider v-model="wrapperHeight" indicator :custom-formatter="(val) => Math.round(val*1.5).toString()" :tooltip="false" size="is-medium" :min="240" :max="540"></b-slider>
+                <b-slider v-model="wrapperHeight" indicator :custom-formatter="(val) => (val*2).toString()" :tooltip="false" size="is-medium" :min="270" :max="540"></b-slider>
               </b-field>
             </b-field>
             <b-field>
-              <b-switch v-model="isAspectFixed">16:9</b-switch>
+              <b-switch v-model="isAspectFixed" true-value="16:9" false-value="Free Aspect">{{ isAspectFixed }}</b-switch>
             </b-field>
           </div>
           <div class="block">
@@ -35,7 +35,7 @@
             </b-field>
           </div>
         </div>
-        <div class="column is-5-tablet is-6-desktop is-12-mobile">
+        <div class="column is-4-tablet is-5-desktop is-12-mobile">
           <b-field label="Language" class="pb-2">
             <b-autocomplete
               v-model="name"
@@ -46,9 +46,14 @@
               <template #empty>No languages found</template>
             </b-autocomplete>
           </b-field>
-          <div style="height: 2rem;">
-            <span v-if="selected" class="tag is-primary has-text-weight-bold is-medium">{{ selected }}</span>
-            <span v-else-if="highlightedText.language" class="tag is-primary has-text-weight-bold is-medium">{{ highlightedText.language }} <span class="has-text-weight-normal">&nbsp;(detected)</span></span>
+          <div class="has-text-weight-bold" style="height: 2rem;">
+            <b-taglist attached v-if="!selected">
+              <b-tag type="is-primary is-large">{{ highlightedText.language }}</b-tag>
+              <b-tag type="is-light is-large"> detected </b-tag>
+            </b-taglist> 
+            <b-taglist v-else-if="highlightedText.language">
+              <b-tag type="is-primary is-large">{{ selected }}</b-tag>              
+            </b-taglist>
           </div>
         </div>
       </div>
@@ -88,7 +93,7 @@
       </p>
       <b-modal v-model="showMessage">
         <div class="notification has-text-centered">
-          <p class="mb-4">Wait a moment</p>
+          <p class="mb-4">Exporting<br>Wait a moment</p>
           <p class="is-size-3 mb-4">Share <strong>Sauce</strong> with your friends!</p>
           <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-text="Try Sauce!" data-url="https://nuxt-text-image-generator.vercel.app/sauce" data-related="" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
@@ -113,7 +118,7 @@ export default {
       inputText: "import Vue from 'vue'",
       wrapperWidth: 800,
       wrapperHeight: 450,
-      isAspectFixed: true,
+      isAspectFixed: "16:9",
       languages: [],
       name: '',
       selected: null,
@@ -128,6 +133,15 @@ export default {
     this.languages = hljs.listLanguages();
     // console.log(this.languages);
     document.getElementById('binput').spellcheck = false;
+    if (window.navigator.userAgent.toLowerCase().match(/iphone|android/)){
+      this.$buefy.notification.open({
+        duration: 5000,
+        message: 'This site does not fully compatible with mobile devices.',
+        type: 'is-warning',
+        position: 'is-bottom-right',
+        hasIcon: true
+      })
+    }
   },
   computed: {
     highlightedText: function() {
@@ -148,7 +162,7 @@ export default {
   },
   watch: {
     wrapperHeight: function() {
-      if (this.isAspectFixed) {
+      if (this.isAspectFixed == "16:9") {
         this.wrapperWidth = Math.round(this.wrapperHeight * 16 / 9);
       }
     },
@@ -161,21 +175,16 @@ export default {
   methods: {
     save () {
       var node = document.getElementById('wrapper');
-      if (window.navigator.userAgent.toLowerCase().match(/iPhone|Android.+Mobile|mac/)){
-        this.$buefy.notification.open({
-          message: 'Scroll down and long press the image.',
-          type: 'is-light',
-          position: 'is-bottom-right'
-        })
-        htmlToImage.toPng(node, {pixelRatio: 1.5})
-          .then(function (dataUrl){
-            var img = new Image();
-            img.src = dataUrl;
-            document.body.appendChild(img);
-          })
-      } else {
+      // if (window.navigator.userAgent.toLowerCase().match(/iPhone|Android.+Mobile|mac/)){
+      //   htmlToImage.toPng(node, {pixelRatio: 2})
+      //     .then(function (dataUrl){
+      //       var img = new Image();
+      //       img.src = dataUrl;
+      //       window.open(img.src);
+      //     })
+      // } else {
         this.showMessage = true;
-        htmlToImage.toPng(node, { pixelRatio: 1.5 })
+        htmlToImage.toPng(node, { pixelRatio: 2 })
           .then(function (dataUrl) {
             var img = new Image();
             var link = document.createElement('a');
@@ -185,7 +194,7 @@ export default {
             link.click();
             document.removeChild(link);
           })
-      }
+      // }
     }
   },
 }
@@ -215,8 +224,20 @@ input[type="text"] {
   background: transparent;
   color: #eee;
 }
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #ccc;
+::placeholder {
+  color: #aaa !important;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #aaa;
+  opacity: 1;
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #aaa;
+  opacity: 1;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #aaa;
+  opacity: 1;
 }
 #preview {
   width: 100%;
