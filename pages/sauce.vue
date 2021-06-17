@@ -167,7 +167,7 @@ export default {
       }
     },
     wrapperWidth: function() {
-      if (this.isAspectFixed) {
+      if (this.isAspectFixed == "16:9") {
         this.wrapperHeight = Math.round(this.wrapperWidth * 9 / 16);
       }
     }
