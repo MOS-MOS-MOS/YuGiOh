@@ -24,6 +24,15 @@ export default {
     {
       src: '~/plugins/vue-konva',
       mode: 'client'
+    },
+    // syntax.vue
+    {
+      src: '~/plugins/vue2editor',
+      mode: 'client'
+    },
+    {
+      src: '~/plugins/highlight',
+      mode: 'client'
     }
   ],
 
@@ -45,7 +54,8 @@ export default {
         id: process.env.GAID,
         debug: false
       }
-    ]
+    ],
+    'nuxt-svg-loader'
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

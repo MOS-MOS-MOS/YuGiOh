@@ -12,10 +12,15 @@
     "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/google-gtag": "^1.0.4",
     "core-js": "^3.9.1",
+    "highlight.js": "^11.0.1",
+    "highlightjs": "^9.16.2",
+    "html-to-image": "^1.6.2",
     "konva": "^8.0.2",
     "nuxt": "^2.15.3",
     "nuxt-buefy": "^0.4.4",
-    "vue-konva": "^2.1.7"
+    "nuxt-svg-loader": "^1.2.0",
+    "vue-konva": "^2.1.7",
+    "vue2-editor": "^2.10.2"
   },
   "devDependencies": {}
 }

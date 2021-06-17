@@ -1,0 +1,94 @@
+[
+  {
+          "value": "auto",
+          "name": "Auto Detection"
+  },
+  {
+          "value": "bash",
+          "name": "Bash"
+  },
+  {
+          "value": "basic",
+          "name": "Basic"
+  },
+  {
+          "value": "csharp",
+          "name": "C#"
+  },
+  {
+          "value": "c",
+          "name": "C"
+  },
+  {
+          "value": "cpp",
+          "name": "C++"
+  },
+  {
+          "value": "coffeescript",
+          "name": "CoffeeScript"
+  },
+  {
+          "value": "dart",
+          "name": "Dart"
+  },
+  {
+          "value": "dust",
+          "name": "Dust"
+  },
+  {
+          "value": "go",
+          "name": "Go"
+  },
+  {
+          "value": "html",
+          "name": "HTML"
+  },
+  {
+          "value": "haskell",
+          "name": "Haskell"
+  },
+  {
+          "value": "java",
+          "name": "Java"
+  },
+  {
+          "value": "javascript",
+          "name": "JavaScript"
+  },
+  {
+          "value": "json",
+          "name": "JSON"
+  },
+  {
+          "value": "kotlin",
+          "name": "Kotlin"
+  },
+  {
+          "value": "markdown",
+          "name": "Markdown"
+  },
+  {
+          "value": "matlab",
+          "name": "Matlab"
+  },
+  {
+          "value": "php",
+          "name": "PHP"
+  },
+  {
+          "value": "python",
+          "name": "Python"
+  },
+  {
+          "value": "rust",
+          "name": "Rust"
+  },
+  {
+          "value": "swift",
+          "name": "Swift"
+  },
+  {
+          "value": "typescript",
+          "name": "TypeScript"
+  }
+]
