@@ -47,7 +47,7 @@
             </b-autocomplete>
           </b-field>
           <div class="has-text-weight-bold" style="height: 2rem;">
-            <b-taglist attached v-if="!selected">
+            <b-taglist attached v-if="!selected && highlightedText.language">
               <b-tag type="is-primary is-large">{{ highlightedText.language }}</b-tag>
               <b-tag type="is-light is-large"> detected </b-tag>
             </b-taglist> 
@@ -79,7 +79,7 @@
             id="bfield"
             position="is-centered"
           >
-            <b-input :style="{ width: wrapperWidth + 'px', height: wrapperHeight + 'px'}"
+            <b-input :style="{ width: wrapperWidth - 80 + 'px', height: wrapperHeight - 45 + 'px'}"
               data-gramm_editor="false"
               id="binput"
               type="textarea"
@@ -250,9 +250,11 @@ input[type="text"] {
   filter: drop-shadow(0 0.5rem 1rem #171717);
   white-space: pre-wrap;
   overflow-y: hidden;
+  overflow-x: hidden;
 }
 #binput {
   padding: 60px 30px 30px 30px;
+  width: 100%;
   height: 100% !important;
   background: transparent;
   font-family: 'Menlo', 'Source Code Pro', monospace !important;
@@ -260,7 +262,9 @@ input[type="text"] {
   resize: none;
   color: transparent;
   caret-color: gray;
+  white-space: pre-wrap;
   overflow-y: hidden;
+  overflow-x: hidden;
 }
 #binput:focus {
   /* border-radius: 10px; */
