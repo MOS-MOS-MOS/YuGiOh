@@ -90,6 +90,7 @@ export default {
         content: '遊戯王マスターデュエルのルームマッチ募集画像を作成するサイトです。'
       },
       {
+        hid: 'og:image',
         property: 'og:image',
         content: 'https://raw.githubusercontent.com/MOS-MOS-MOS/YuGioh/master/static/background.png'
       },
