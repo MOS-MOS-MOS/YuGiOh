@@ -1,24 +1,21 @@
 <template>
   <section class="section container">
-    <h1 class="title">Text Image Generator</h1>
+    <h1 class="title">MDルムマ画像くん（Haruki Kinoshita様のリポジトリを使用、一部改変）</h1>
     <div class="column is-6">
       <!-- 入力フォーム -->
+      <a href="https://github.com/HarukiKinoshita">元コード製作者様GitHub</a><br>
+      <a href="https://twitter.com/hage_urara">改変者Twitter</a>
       <b-field
-        label="テキスト"
+        label="ルムマID"
         position="is-centered"
       >
         <b-input
-          placeholder="Type Something"
+          placeholder="ルームマッチIDを入力してね"
           type="text"
           v-model="inputText"
         />
       </b-field>
-
-      <!-- 文字サイズを調節するスライダー -->
-      <b-field label="文字サイズ">
-        <b-slider v-model="fontSize" :min="24" :max="48" :step="4" ticks rounded>
-        </b-slider>
-      </b-field>
+      
     </div>
 
       <div id="konvaCanvas" style="margin: auto;">
@@ -48,7 +45,7 @@
               verticalAlign: 'middle',
               offsetY: 20,
               fill: '#b0bec5',
-              fontSize: fontSize,
+              fontSize: 60,
               fontFamily: 'Helvetica',
               fontStyle: 'bold',
               lineHeight: 1.4,
@@ -61,11 +58,49 @@
         </v-stage>
       </div>
       <b-button @click="save" class="button is-primary mt-4" icon-left="download">
-        画像を保存
+        画像を保存＆ツイート用の文章をコピペ
       </b-button>
+
 
   </section>
 </template>
+
+<script>
+export default {
+  metaInfo: {
+    meta: [
+      {
+        property: 'og:site_name',
+        content: 'MDルムマ画像くん'
+      },
+      {
+        property: 'og:type',
+        content: 'website'
+      },
+      {
+        property: 'og:url',
+        content: 'https://yugioh.day'
+      },
+      {
+        property: 'og:title',
+        content: 'MDルムマ画像くん'
+      },
+      {
+        property: 'og:description',
+        content: '遊戯王マスターデュエルのルームマッチ募集画像を作成するサイトです。'
+      },
+      {
+        property: 'og:image',
+        content: 'https://sample.netlify.com/sample.jpg'
+      },
+      {
+        name: 'twitter:card',
+        content: 'summary_large_image'
+      }
+    ]
+  }
+};
+</script>
 
 <script>
 export default {
@@ -96,10 +131,12 @@ export default {
       link.href = stage.toDataURL({
         // ステージを2倍に拡大する
         pixelRatio: 2
+        
       })
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
+      navigator.clipboard.writeText(`ルムマID：${this.inputText}`);
     }
   },
 }
