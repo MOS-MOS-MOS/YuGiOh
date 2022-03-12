@@ -79,7 +79,7 @@ export default {
       },
       {
         property: 'og:url',
-        content: 'https://yugioh.day'
+        content: 'https://yugioh-md.netlify.app/'
       },
       {
         property: 'og:title',
