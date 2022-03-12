@@ -67,44 +67,6 @@
 
 <script>
 export default {
-  metaInfo: {
-    meta: [
-      {
-        property: 'og:site_name',
-        content: 'MDルムマ画像くん'
-      },
-      {
-        property: 'og:type',
-        content: 'website'
-      },
-      {
-        property: 'og:url',
-        content: 'https://yugioh-md.netlify.app/'
-      },
-      {
-        property: 'og:title',
-        content: 'MDルムマ画像くん'
-      },
-      {
-        property: 'og:description',
-        content: '遊戯王マスターデュエルのルームマッチ募集画像を作成するサイトです。'
-      },
-      {
-        hid: 'og:image',
-        property: 'og:image',
-        content: 'https://raw.githubusercontent.com/MOS-MOS-MOS/YuGioh/master/static/background.png'
-      },
-      {
-        name: 'twitter:card',
-        content: 'summary_large_image'
-      }
-    ]
-  }
-};
-</script>
-
-<script>
-export default {
   data() {
     return {
       bgImage: '',

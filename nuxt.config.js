@@ -10,7 +10,15 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+      { hid: 'description', name: 'description', content: '' },
+      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' },
+      { hid: 'og:site_name', property: 'og:site_name', content: 'MDルムマ画像くん' },
+      { hid: 'og:type', property: 'og:type', content: 'website' },
+      { hid: 'og:url', property: 'og:url', content: 'https://yugioh-md.netlify.app/' },
+      { hid: 'og:title', property: 'og:title', content: 'MDルムマ画像くん' },
+      { hid: 'og:description', property: 'og:description', content: '共通ディスクリプション' },
+      { hid: 'og:image', property: 'og:image', content: 'https://raw.githubusercontent.com/MOS-MOS-MOS/YuGioh/master/static/background.png' },
+      { name: 'twitter:card', content: 'summary' }//twitterの画像サイズ
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
