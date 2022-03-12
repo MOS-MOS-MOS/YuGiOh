@@ -91,7 +91,7 @@ export default {
       },
       {
         property: 'og:image',
-        content: 'https://sample.netlify.com/sample.jpg'
+        content: 'https://github.com/MOS-MOS-MOS/YuGioh/blob/master/static/background.png'
       },
       {
         name: 'twitter:card',
