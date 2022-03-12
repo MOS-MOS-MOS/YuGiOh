@@ -99,7 +99,7 @@ export default {
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      navigator.clipboard.writeText(`ルムマID：${this.inputText}`);
+      navigator.clipboard.writeText(`ルムマID：${this.inputText}` + "\nhttps://yugioh-md.netlify.app/");
     }
   },
 }
