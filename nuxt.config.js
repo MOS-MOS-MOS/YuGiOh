@@ -16,7 +16,7 @@ export default {
       { hid: 'og:type', property: 'og:type', content: 'website' },
       { hid: 'og:url', property: 'og:url', content: 'https://yugioh-md.netlify.app/' },
       { hid: 'og:title', property: 'og:title', content: 'MDルムマ画像くん' },
-      { hid: 'og:description', property: 'og:description', content: '共通ディスクリプション' },
+      { hid: 'og:description', property: 'og:description', content: '遊戯王マスターデュエルのルームマッチ画像を生成' },
       { hid: 'og:image', property: 'og:image', content: 'https://raw.githubusercontent.com/MOS-MOS-MOS/YuGioh/master/static/background.png' },
       { name: 'twitter:card', content: 'summary' }//twitterの画像サイズ
     ],
